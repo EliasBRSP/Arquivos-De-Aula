@@ -1,0 +1,26 @@
+#define LED1 14
+#define LED_LIGADO 0
+#define LED_DESLIGADO 1
+#define BOTAO1 5
+#define BOTAO_LIGADO 0
+#define BOTAO_DESLIGADO 1
+
+void inicializa_hardware(){
+  pinMode(LED1, OUTPUT);
+  digitalWrite(LED1, LED_DESLIGADO);
+  pinMode(BOTAO1, INPUT_PULLUP);
+}
+ICACHE_RAM_ATTR void mudar_led_int(){
+  digitalWrite(LED1, !digitalRead(LED1));
+}
+
+void inicializa_interrupcoes(){
+  attachInterrupt(digitalPinToInterrupt(BOTAO1), mudar_led_int, FALLING);
+}
+void setup() {
+  inicializa_hardware();
+  inicializa_interrupcoes();
+}
+void loop() {
+ 
+}
