@@ -1,0 +1,23 @@
+void inicializa_hardware(){
+  //Inicializa a comunicação Serial
+  Serial.begin(9600); //9600, 19200, 38400 (bluetooth), 115200 (ethernet)
+}
+
+int contadora = 0;
+int contadora = 100;
+char msg[50];
+
+void setup() {
+  inicializa_hardware();
+  Serial.println("Inicio da contagem:");
+}
+void loop() {
+   sprintf(msg, "Contagem: %d", contadora);
+   Serial.println(msg);
+   delay(1000);
+   contadora++;
+   if(contadora >= 10){
+    Serial.println("Plus Ultra");
+    contadora = 0;
+   }
+}
