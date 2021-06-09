@@ -1,0 +1,39 @@
+#define D5_LED1 13
+#define D6_LED2 12
+#define LIGAR_LED HIGH
+#define DESLIGAR_LED LOW
+#define D2_BOTAO1 4
+#define D1_BOTAO2 5
+int guarda_botao;
+int estado_botao=0;
+int guarda_botao1;
+int estado_botao1=0;
+void setup() {
+pinMode (D5_LED1, OUTPUT);
+pinMode (D6_LED2, OUTPUT);
+pinMode (D2_BOTAO1, INPUT_PULLUP);
+pinMode (D1_BOTAO2, INPUT_PULLUP);
+}
+
+void loop() {
+estado_botao=digitalRead(D2_BOTAO1);
+if (estado_botao==0){
+guarda_botao=!guarda_botao;
+delay(500);
+}
+if(guarda_botao==1){
+  digitalWrite(D5_LED1, LIGAR_LED);
+  }else{
+ digitalWrite(D5_LED1, DESLIGAR_LED);
+  }
+ estado_botao1=digitalRead(D1_BOTAO2);
+if (estado_botao1==0){
+guarda_botao1=!guarda_botao1;
+delay(500);
+}
+if(guarda_botao1==1){
+  digitalWrite(D6_LED2, LIGAR_LED);
+  }else{
+ digitalWrite(D6_LED2, DESLIGAR_LED);
+}
+}
